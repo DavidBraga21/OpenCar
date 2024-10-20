@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exibir Reservas</title>
+</head>
+<body>
+    <h1>Reservas</h1>
+    <ul>
+        {% for reservation in reservations %}
+        <li>Usuário: {{ reservation.user_id }} - Carro: {{ reservation.car_id }} - Dias: {{ reservation.days }} - Valor Total: R${{ reservation.total_value }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar ao Menu Principal</a>
+</body>
+</html>

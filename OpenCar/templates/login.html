@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/carros">Nossos Carros</a>
+        <a href="/reservas/fazer">Reservar</a>
+
+        {% if 'user_id' not in session %}
+            <a href="/usuarios/login">Fazer login</a>
+            <a href="/usuarios/cadastrar">Cadastre-se</a>
+           
+        {% endif %}
+
+        {% if 'user_id' in session %}
+            <a href="/reservas/perfil">Ver Perfil</a>
+            <a href="/usuarios/logout">Logout</a>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        <div class="login-section">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            {% if category == 'danger_login' %}
+                                <li class="{{ category }}">{{ message }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('user_bp.login_usuarios') }}" method="POST">
+                <center><h1>LOGIN</h1></center>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha"><br><br>
+                
+                <center><input type="submit" value="Login"></center><br><br>
+                <center><a href="/" style="white">Voltar para o Início</a></center>
+            </form>
+        </div>
+        <div class="logo-section">
+            
+        </div>
+    </div>
+</body>
+</html>

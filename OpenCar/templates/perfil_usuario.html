@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Perfil.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/carros">Nossos Carros</a>
+        <a href="/reservas/fazer">Reservar</a>
+        {% if 'user_id' not in session %}
+            <a href="/usuarios/login">Fazer login</a>
+            <a href="/usuarios/cadastrar">Cadastre-se</a>
+        {% endif %}
+        {% if 'user_id' in session %}
+            <a href="/reservas/perfil">Ver Perfil</a>
+            <a href="/usuarios/logout">Logout</a>
+        {% endif %}
+    </nav>
+    
+    <div class="container">
+        <h1>Perfil do Usuário</h1>
+        <h2>Informações Pessoais</h2>
+        <p><strong>Nome:</strong> {{ user.name }}</p>
+        <p><strong>Endereço:</strong> {{ user.address }}</p>
+        <p><strong>Telefone:</strong> {{ user.phone_number }}</p>
+        <p><strong>E-mail:</strong> {{ user.email }}</p>
+        
+        <h2>Reservas</h2>
+        {% if reservations %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID da Reserva</th>
+                        <th>ID do Carro</th>
+                        <th>Dias</th>
+                        <th>Valor Total</th>
+                        <th>Data da Reserva</th>
+                        <th>Data de Término</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.id }}</td>
+                            <td>{{ reservation.car_id }}</td>
+                            <td>{{ reservation.days }}</td>
+                            <td>{{ reservation.total_value }}</td>
+                            <td>{{ reservation.reservation_date.strftime('%d/%m/%Y') }}</td>
+                            <td>{{ reservation.end_date.strftime('%d/%m/%Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Você não tem reservas.</p>
+        {% endif %}
+        
+        <a class="button" href="{{ url_for('index') }}">Voltar ao Menu Principal</a>
+        <a class="button" href="{{ url_for('user_bp.logout') }}">Logout</a>
+    </div>
+</body>
+</html>

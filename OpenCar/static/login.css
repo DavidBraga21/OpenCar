@@ -1,0 +1,112 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    
+}
+nav {
+    width: 100%;
+    background-color: rgb(41, 41, 41);
+    display: flex;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    display: block;
+}
+nav a:hover {
+    background-color: #4b4b4b;
+    border-radius: 4px;
+}
+
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.login-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Nordique Inline', sans-serif;
+}
+
+.login-section h1 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.login-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-family: 'Nordique Inline', sans-serif;
+}
+
+.login-section input[type="email"],
+.login-section input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-section input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Nordique Inline', sans-serif;
+}
+
+.login-section input[type="submit"]:hover {
+    background-color: #45a049;
+    font-family: 'Nordique Inline', sans-serif;
+}
+
+.logo-section {
+    width: 60%; /* ou a largura que você desejar */
+    height: 100vh; /* ou a altura que você desejar */
+    background-image: url('../static/Images/backgroundLogin.png');
+    background-size: cover; /* Redimensiona a imagem para cobrir toda a div */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
+}
+
+a {
+     color: white;
+     text-decoration: none;
+     
+}
+
+a:hover {
+    color:  #c90000;
+    border-radius: 4px;
+}
